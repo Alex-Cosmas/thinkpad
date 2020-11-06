@@ -1,6 +1,9 @@
 <div class="container">
     <div class="mx-auto px-20 py-4">
         <div class="py-4">
+        <div class="bg-gray-900 text-white text-center py-2 px-1 rounded w-1/6 float-right">
+            <%= link_to "Create Doc + ", new_doc_path %>
+         </div>
             <% @docs.each do |doc| %>
                 <h2 class="mt-4">
                     <%= link_to doc.title, doc  %>
@@ -13,6 +16,8 @@
                 </p>
 
             <% end %>
+
+           
         </div>
 
 

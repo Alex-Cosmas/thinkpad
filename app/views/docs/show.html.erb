@@ -4,5 +4,16 @@
         <%= @doc.title %>
         </h1>
         <%= @doc.content %>
+
+       
+        <div class="py-4">
+
+                    <%= link_to "All Docs", docs_path  %>
+                    <%= link_to "Fix Doc", edit_doc_path(@doc) %>
+                    <%= link_to "Trash It", doc_path(@doc), method: :delete, data: { confirm: "Are you sure?" }%>            
+        </div>
+          
+
+       
     </div>
 </div>
