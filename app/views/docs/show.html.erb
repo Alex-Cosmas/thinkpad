@@ -1,16 +1,26 @@
 <div class="container">
     <div class="mx-auto px-20">
-        <h1 class="py-10">
-        <%= @doc.title %>
-        </h1>
-        <%= @doc.content %>
-
+        <div class="bg-white shadow-lg px-12 py-4">
+            <h1 class="py-4 text-xl">
+                <%= @doc.title %>
+            </h1>
+            <div class="my-3">
+               <p class="">
+                <%= simple_format(@doc.content) %>
+               </p>
+            </div>
+        
+        </div>
        
         <div class="py-4">
+            <ul class="flex justify-between">
+                <li> <%= link_to "# - Edit", edit_doc_path(@doc) %></li>
+                <li> <%= link_to "X - Delete", doc_path(@doc), method: :delete, data: { confirm: "Are you sure?" }%> </li>
 
-                    <%= link_to "All Docs", docs_path  %>
-                    <%= link_to "Fix Doc", edit_doc_path(@doc) %>
-                    <%= link_to "Trash It", doc_path(@doc), method: :delete, data: { confirm: "Are you sure?" }%>            
+            
+             
+            
+            </ul>          
         </div>
           
 
