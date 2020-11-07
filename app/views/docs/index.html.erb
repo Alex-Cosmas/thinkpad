@@ -1,22 +1,51 @@
 <div class="container">
     <div class="mx-auto px-20 py-4">
         <div class="py-4">
-        <div class="bg-gray-900 text-white text-center py-2 px-1 rounded w-1/6 float-right">
-            <%= link_to "Create Doc + ", new_doc_path %>
-         </div>
+
+        <div class="">
+
+           <% unless @docs.blank? %>   
             <% @docs.each do |doc| %>
-                <h2 class="mt-4">
-                    <%= link_to doc.title, doc  %>
-                </h2>
-                <p>
-                    <%= time_ago_in_words(doc.created_at) %>
-                </p>
-                <p>
-                    <%= truncate(doc.content, length:50) %>
-                </p>
+
+                <a href="<%= (url_for [doc]) %>">
+                    <div class="bg-white text-gray-900 my-4 shadow-lg">
+                        <div class="flex flex-col">
+                            <div class="py-4 mx-16">
+                                <div class="flex justify-between items-center">
+                                    <h2 class="mt-4 text-xl font-bold">
+                                    <%= doc.title %>
+                                </h2>
+                                <p>
+                                    Updated: <%= time_ago_in_words(doc.created_at) %>
+                                </p>
+                                </div>
+                                <p>
+                                    <%= truncate(doc.content, length:50) %>
+                                </p> 
+
+                            </div>            
+                        </div>
+                    </div>
+                </a>
 
             <% end %>
+           <% else %>
 
+           <div class="flex flex-col">
+            <h2>Welcome! Start Creating and Documenting your thoughts with ease</h2>
+            <p>Happy Creating</p>
+           <button class="bg-gray-900 p-2 w-1/2 text-white mt-8">
+            <%= link_to "Create New Document", new_doc_path %>
+           </button>
+           </div>
+          
+            <% end %>
+
+           
+
+
+        </div>
+       
            
         </div>
 
